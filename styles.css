@@ -1,0 +1,450 @@
+/* Streamly Marketing Website — Shared Styles
+   Cinematic Dark theme. Mirrors AppBackground.swift dark palette
+   (#0A0612 base + red/purple/blue radial washes). */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg-base: #0A0612;
+  --bg-deep: #03040E;
+  --surface: #180A28;
+  --surface-elevated: #231435;
+  --accent: #DC2626;
+  --accent-deep: #991B1B;
+  --accent-light: #F87171;
+  --text: #ffffff;
+  --text-2: rgba(255,255,255,0.70);
+  --text-3: rgba(255,255,255,0.45);
+  --border: rgba(255,255,255,0.08);
+  --border-strong: rgba(255,255,255,0.14);
+}
+
+html { scroll-behavior: smooth; }
+html, body {
+  background: var(--bg-base);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", system-ui, sans-serif;
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body {
+  background:
+    radial-gradient(circle at 50% 18%, #1A0A38 0%, transparent 50%),
+    radial-gradient(ellipse at 15% 55%, rgba(90,20,16,0.5) 0%, transparent 60%),
+    radial-gradient(circle at 55% 52%, rgba(74,14,46,0.55) 0%, transparent 40%),
+    radial-gradient(ellipse at 85% 40%, rgba(14,24,56,0.4) 0%, transparent 65%),
+    var(--bg-base);
+  background-attachment: fixed;
+}
+
+a { color: var(--accent-light); text-decoration: none; transition: color 0.15s; }
+a:hover { color: var(--accent); }
+::selection { background: var(--accent); color: white; }
+
+/* Navigation */
+nav.site-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 16px 40px;
+  display: flex; justify-content: space-between; align-items: center;
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  background: rgba(10,6,18,0.65);
+  border-bottom: 1px solid var(--border);
+}
+nav.site-nav .logo {
+  font-weight: 800; font-size: 22px; letter-spacing: -0.02em;
+  color: var(--text); text-decoration: none;
+}
+nav.site-nav .logo span { color: var(--accent); }
+nav.site-nav .nav-links { display: flex; gap: 28px; align-items: center; }
+nav.site-nav .nav-links a {
+  color: var(--text-2); font-size: 14px; font-weight: 500;
+  text-decoration: none;
+}
+nav.site-nav .nav-links a:hover { color: var(--text); }
+nav.site-nav .cta {
+  background: var(--accent); color: white;
+  padding: 10px 18px; border-radius: 100px;
+  font-size: 14px; font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s, background 0.2s;
+}
+nav.site-nav .cta:hover { transform: translateY(-1px); background: var(--accent-deep); color: white; }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-weight: 600; font-size: 16px;
+  text-decoration: none;
+  transition: transform 0.2s, background 0.2s;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.btn.primary { background: white; color: black; }
+.btn.primary:hover { transform: translateY(-2px); color: black; }
+.btn.secondary {
+  background: rgba(255,255,255,0.08);
+  color: white;
+  border-color: var(--border-strong);
+}
+.btn.secondary:hover { background: rgba(255,255,255,0.14); color: white; }
+.btn.accent { background: var(--accent); color: white; }
+.btn.accent:hover { background: var(--accent-deep); color: white; }
+.btn.large { padding: 16px 32px; font-size: 17px; }
+
+/* Footer */
+footer.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 48px 40px;
+  color: var(--text-3); font-size: 13px;
+  margin-top: 80px;
+}
+footer.site-footer .inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 2fr; gap: 40px;
+  align-items: start;
+}
+footer.site-footer .brand .logo {
+  font-weight: 800; font-size: 20px; letter-spacing: -0.02em;
+  color: var(--text); display: block; margin-bottom: 8px;
+}
+footer.site-footer .brand .logo span { color: var(--accent); }
+footer.site-footer .brand p { color: var(--text-3); font-size: 12px; }
+footer.site-footer .links {
+  display: flex; gap: 24px; justify-content: flex-end; flex-wrap: wrap;
+}
+footer.site-footer .links a { color: var(--text-3); text-decoration: none; font-size: 13px; }
+footer.site-footer .links a:hover { color: var(--text); }
+
+/* Feature sections */
+section.feature-section { padding: 100px 40px; }
+section.feature-section .inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+  align-items: center;
+}
+section.feature-section.reverse .inner > .copy { order: 2; }
+section.feature-section .copy .eyebrow {
+  color: var(--accent); font-size: 13px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  margin-bottom: 20px;
+}
+section.feature-section .copy h2 {
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 800; letter-spacing: -0.03em;
+  line-height: 1.1; margin-bottom: 20px;
+}
+section.feature-section .copy p {
+  font-size: 17px; color: var(--text-2);
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+section.feature-section .copy ul {
+  list-style: none; padding-left: 0; margin-top: 16px;
+}
+section.feature-section .copy ul li {
+  font-size: 15px; color: var(--text-2);
+  padding-left: 24px; position: relative;
+  margin-bottom: 8px; line-height: 1.5;
+}
+section.feature-section .copy ul li::before {
+  content: '→'; color: var(--accent);
+  position: absolute; left: 0; top: 0;
+}
+
+/* Mock UI containers (deprecated — kept for prototypes folder) */
+.mock {
+  background: linear-gradient(145deg, rgba(24,10,40,0.7), rgba(10,6,18,0.7));
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 24px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 40px rgba(220,38,38,0.1);
+}
+
+/* Phone frame — wraps an iPhone screenshot so it looks like a real device */
+.phone-frame {
+  display: inline-block;
+  padding: 9px;
+  background: linear-gradient(145deg, #2a2a2a, #050505);
+  border-radius: 44px;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.10),
+    inset 0 0 0 2px rgba(0,0,0,0.4),
+    0 40px 80px rgba(0,0,0,0.65),
+    0 0 100px rgba(220,38,38,0.10);
+  max-width: 300px;
+  width: 100%;
+  position: relative;
+}
+.phone-frame img {
+  display: block;
+  width: 100%;
+  border-radius: 36px;
+  background: #000;
+}
+.phone-frame.hero-phone {
+  max-width: 340px;
+  transform: rotate(-2deg);
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.phone-frame.hero-phone:hover { transform: rotate(0deg) scale(1.02); }
+
+/* Apple TV frame — wraps a 1920×1080 tvOS screenshot so it looks like an Apple TV screen.
+   Slim black bezel + subtle red glow, evokes a TV set without overdoing chrome. */
+.tv-frame {
+  display: inline-block;
+  padding: 6px;
+  background: linear-gradient(145deg, #1a1a1a, #050505);
+  border-radius: 14px;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.10),
+    inset 0 0 0 2px rgba(0,0,0,0.5),
+    0 40px 80px rgba(0,0,0,0.7),
+    0 0 100px rgba(220,38,38,0.10);
+  width: 100%;
+  max-width: 520px;
+  position: relative;
+}
+.tv-frame img,
+.tv-frame .carousel-track {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  background: #000;
+}
+.tv-frame.large { max-width: 680px; }
+
+/* ─── Carousel ─────────────────────────────────────────────────────────
+   Crossfade between full-bleed slides. Auto-rotates every N ms
+   (data-autoplay), pauses on hover/focus, respects prefers-reduced-motion.
+   Markup pattern:
+     <div class="carousel-wrapper">
+       <div class="phone-frame">        // or .tv-frame
+         <div class="carousel-track" data-carousel data-autoplay="4500">
+           <img class="carousel-slide active" src=...>
+           <img class="carousel-slide" src=...>
+         </div>
+       </div>
+       <div class="carousel-dots" data-carousel-dots></div>  // dots injected by JS
+     </div>
+*/
+.carousel-wrapper {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 18px;
+  position: relative;
+}
+.carousel-track {
+  position: relative;
+  overflow: hidden;
+}
+.carousel-slide {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  pointer-events: none;
+}
+.carousel-slide.active { opacity: 1; }
+
+/* First slide stays in flow to give the track its size before JS hydrates */
+.phone-frame .carousel-track .carousel-slide:first-child,
+.tv-frame .carousel-track .carousel-slide:first-child {
+  position: relative;
+}
+.phone-frame .carousel-track .carousel-slide:not(:first-child),
+.tv-frame .carousel-track .carousel-slide:not(:first-child) {
+  position: absolute;
+}
+
+.carousel-dots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+.carousel-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.22);
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.carousel-dot:hover { background: rgba(255,255,255,0.40); }
+.carousel-dot.active {
+  background: var(--accent);
+  width: 26px;
+  border-radius: 4px;
+}
+.carousel-caption {
+  font-size: 13px;
+  color: var(--text-3);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  min-height: 18px;
+  transition: opacity 0.3s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-slide { transition: none; }
+}
+
+/* Phone duo — two phones overlapping for richer mocks */
+.phone-duo {
+  position: relative;
+  display: flex; justify-content: center; align-items: center;
+  min-height: 600px;
+}
+.phone-duo .phone-frame {
+  position: absolute;
+  max-width: 240px;
+}
+.phone-duo .phone-frame.back {
+  transform: translate(-80px, -30px) rotate(-6deg);
+  opacity: 0.75;
+  z-index: 1;
+}
+.phone-duo .phone-frame.front {
+  transform: translate(80px, 30px) rotate(4deg);
+  z-index: 2;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.10),
+    inset 0 0 0 2px rgba(0,0,0,0.4),
+    0 50px 100px rgba(0,0,0,0.7),
+    0 0 120px rgba(220,38,38,0.18);
+}
+
+/* Rail stack — show multiple rail screenshots stacked for the Recommendations section */
+.rail-stack {
+  display: flex; flex-direction: column;
+  gap: 14px;
+  padding: 20px;
+  background: linear-gradient(145deg, rgba(24,10,40,0.6), rgba(10,6,18,0.7));
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 40px rgba(220,38,38,0.10);
+}
+.rail-stack img {
+  display: block; width: 100%; height: auto;
+  border-radius: 10px;
+  background: #000;
+}
+
+/* App Store badge — sized via height; aspect locked */
+.app-store-badge {
+  display: inline-block;
+  height: 56px;
+  width: auto;
+  transition: transform 0.2s, filter 0.2s;
+}
+.app-store-badge:hover { transform: translateY(-2px); filter: brightness(1.1); }
+
+/* Brand logo image — the real Streamly logo PNG (icon + "streamly" wordmark + tagline).
+   Sized via height so the aspect locks naturally. Drop-shadow on dark background
+   keeps the icon and red wordmark crisp without needing a dark-mode variant. */
+.logo-img {
+  display: flex; align-items: center;
+  text-decoration: none;
+}
+.logo-img img {
+  display: block;
+  width: auto;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.4));
+}
+nav.site-nav a.logo-img { height: 38px; }
+nav.site-nav a.logo-img img { height: 100%; }
+footer.site-footer .brand a.logo-img {
+  height: 44px;
+  margin-bottom: 12px;
+}
+footer.site-footer .brand a.logo-img img { height: 100%; }
+
+/* Legal page layout */
+.legal-page {
+  max-width: 760px; margin: 0 auto;
+  padding: 140px 40px 80px;
+}
+.legal-page h1 {
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 800; letter-spacing: -0.03em;
+  margin-bottom: 8px;
+}
+.legal-page .meta {
+  color: var(--text-3); font-size: 13px;
+  margin-bottom: 48px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+}
+.legal-page h2 {
+  font-size: 22px; font-weight: 700;
+  margin: 40px 0 16px;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+.legal-page h3 {
+  font-size: 17px; font-weight: 700;
+  margin: 24px 0 12px;
+  color: var(--text);
+}
+.legal-page p {
+  font-size: 16px; line-height: 1.65;
+  color: var(--text-2);
+  margin-bottom: 16px;
+}
+.legal-page ul { padding-left: 24px; margin-bottom: 16px; }
+.legal-page li {
+  font-size: 16px; line-height: 1.65;
+  color: var(--text-2);
+  margin-bottom: 8px;
+}
+.legal-page a { color: var(--accent-light); }
+
+/* FAQ list (support page) */
+.faq-list { max-width: 760px; margin: 0 auto; padding: 0 40px; }
+.faq-item {
+  border-bottom: 1px solid var(--border);
+  padding: 24px 0;
+}
+.faq-item summary {
+  font-size: 18px; font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  list-style: none;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.faq-item summary::after {
+  content: '+'; font-size: 24px; font-weight: 300;
+  color: var(--accent); transition: transform 0.2s;
+}
+.faq-item[open] summary::after { transform: rotate(45deg); }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item .answer {
+  margin-top: 16px;
+  color: var(--text-2);
+  font-size: 16px; line-height: 1.6;
+}
+.faq-item .answer p { margin-bottom: 12px; }
+.faq-item .answer p:last-child { margin-bottom: 0; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  nav.site-nav { padding: 12px 20px; }
+  nav.site-nav .nav-links { display: none; }
+  nav.site-nav .nav-links.always-show { display: flex; gap: 16px; }
+  section.feature-section { padding: 60px 20px; }
+  section.feature-section .inner { grid-template-columns: 1fr; gap: 40px; }
+  section.feature-section.reverse .inner > .copy { order: 0; }
+  footer.site-footer { padding: 32px 20px; }
+  footer.site-footer .inner { grid-template-columns: 1fr; gap: 24px; }
+  footer.site-footer .links { justify-content: flex-start; }
+  .legal-page { padding: 100px 20px 60px; }
+  .faq-list { padding: 0 20px; }
+}

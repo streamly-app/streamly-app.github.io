@@ -1,0 +1,8 @@
+.DS_Store
+.idea/
+.vscode/
+*.swp
+.AppleDouble
+.LSOverride
+Thumbs.db
+node_modules/

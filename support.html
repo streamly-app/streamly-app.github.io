@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support · Streamly</title>
+<meta name="description" content="Streamly support, FAQ, and contact. Help with adding playlists, subscriptions, and troubleshooting.">
+<meta name="theme-color" content="#0A0612">
+<link rel="icon" type="image/png" sizes="256x256" href="assets/app-icon-256.png">
+<link rel="apple-touch-icon" href="assets/app-icon-256.png">
+<link rel="stylesheet" href="styles.css">
+<style>
+.support-hero { max-width: 760px; margin: 0 auto; padding: 140px 40px 60px; text-align: center; }
+.support-hero h1 { font-size: clamp(36px, 5vw, 56px); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 16px; }
+.support-hero p { color: var(--text-2); font-size: 18px; line-height: 1.5; }
+.support-hero a { color: var(--accent-light); }
+.faq-section-title {
+  max-width: 760px; margin: 60px auto 24px;
+  padding: 0 40px;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--accent);
+}
+.contact-card {
+  max-width: 760px; margin: 80px auto 0;
+  padding: 40px;
+  background: rgba(24,10,40,0.5);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  text-align: center;
+}
+.contact-card h2 { font-size: 28px; font-weight: 700; margin-bottom: 12px; }
+.contact-card p { color: var(--text-2); margin-bottom: 24px; }
+@media (max-width: 768px) {
+  .support-hero { padding: 100px 20px 40px; }
+  .faq-section-title { padding: 0 20px; }
+  .contact-card { padding: 32px 20px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="logo-img" aria-label="Streamly home">
+    <img src="assets/logo-horizontal.png" alt="Streamly">
+  </a>
+  <div class="nav-links">
+    <a href="index.html#features">Features</a>
+    <a href="index.html#pricing">Pricing</a>
+    <a href="support.html">Support</a>
+  </div>
+  <a href="#" class="cta">⬇ Download</a>
+</nav>
+
+<section class="support-hero">
+  <h1>How can we help?</h1>
+  <p>Browse common questions below, or email us directly at <a href="mailto:streamlyiptvpro@gmail.com">streamlyiptvpro@gmail.com</a>. We aim to respond within 24 hours.</p>
+</section>
+
+<div class="faq-section-title">Getting started</div>
+<div class="faq-list">
+  <details class="faq-item">
+    <summary>How do I add an IPTV playlist?</summary>
+    <div class="answer">
+      <p>Open Streamly → Menu → Manage Playlists → <strong>Add Playlist</strong>. You'll see two options:</p>
+      <p><strong>M3U URL</strong> — paste the URL your IPTV provider gave you (ends in <code>.m3u</code> or <code>.m3u8</code>). Tap Save. Streamly parses the playlist (usually 5–60 seconds depending on size) and your channels appear in the Live tab.</p>
+      <p><strong>Xtream Codes</strong> — enter the server URL, your username, and your password. Streamly will fetch live channels, movies, and series in parallel.</p>
+      <p>Free accounts can have up to 3 playlists. Pro removes the limit.</p>
+    </div>
+  </details>
+
+  <details class="faq-item">
+    <summary>What's the difference between M3U and Xtream Codes?</summary>
+    <div class="answer">
+      <p>Both are common IPTV playlist formats supported by Streamly.</p>
+      <p><strong>M3U</strong> is a simple text file listing channels and their stream URLs. Most IPTV providers offer an M3U link. Easy, universal, but no native support for movies/series.</p>
+      <p><strong>Xtream Codes</strong> uses a richer API that exposes live channels, movies (VOD), and series with metadata. If your provider supports it, prefer Xtream — you'll get a much better experience including Continue Watching, episode tracking, and TMDB-enriched metadata.</p>
+    </div>
+  </details>
+
+  <details class="faq-item">
+    <summary>How do I switch between multiple playlists?</summary>
+    <div class="answer">
+      <p>Menu → Manage Playlists → tap the playlist you want to activate → tap <strong>Set Active</strong>. The app reloads with the new playlist's content.</p>
+      <p>Multiple playlists require a Pro subscription. Free users get one active playlist at a time.</p>
+    </div>
+  </details>
+</div>
+
+<div class="faq-section-title">Playback &amp; streams</div>
+<div class="faq-list">
+  <details class="faq-item">
+    <summary>A stream won't play — what should I try?</summary>
+    <div class="answer">
+      <p>In order:</p>
+      <p>1. <strong>Try another channel</strong> from the same playlist. If others work, the issue is with that specific stream (the broadcaster may have changed URLs or geo-restricted it).</p>
+      <p>2. <strong>Check your IPTV provider's status page</strong>. Many providers have brief outages.</p>
+      <p>3. <strong>Refresh the playlist</strong> via Menu → Refresh Playlist. This re-fetches stream URLs from your provider.</p>
+      <p>4. <strong>Confirm your subscription is active</strong> with your IPTV provider (the Streamly account info screen shows the expiry date Xtream gives us).</p>
+      <p>If all your streams stop working at once, the issue is almost certainly with your IPTV provider, not Streamly.</p>
+    </div>
+  </details>
+
+  <details class="faq-item">
+    <summary>Which codecs and containers are supported?</summary>
+    <div class="answer">
+      <p>Streamly uses a hybrid playback engine. Most modern containers (MP4, MKV, MOV, HLS / M3U8) and codecs (H.264, HEVC / H.265, AAC, AC-3, E-AC-3) work natively via AVPlayer.</p>
+      <p>For trickier formats — TS transport streams, HEVC-over-TS (common in Bein-style live channels), DivX/Xvid — we fall back to libVLC automatically. You shouldn't need to do anything.</p>
+      <p>If a stream still won't play, please email support with the channel/stream URL and we'll investigate.</p>
+    </div>
+  </details>
+
+  <details class="faq-item">
+    <summary>Why does Streamly need to send traffic over HTTP?</summary>
+    <div class="answer">
+      <p>Many IPTV providers still serve streams over plain HTTP (not HTTPS). To play those streams, Streamly's Info.plist sets <code>NSAllowsArbitraryLoads = true</code>. This applies only to the stream URLs you provide.</p>
+      <p>All Streamly-controlled network traffic (authentication, sync, analytics, purchase validation, our website) uses HTTPS.</p>
+    </div>
+  </details>
+</div>
+
+<div class="faq-section-title">Subscription &amp; pricing</div>
+<div class="faq-list">
+  <details class="faq-item">
+    <summary>What does Pro unlock?</summary>
+    <div class="answer">
+      <p>Pro adds: unlimited playlists, unlimited favorites, iCloud cross-device sync of watch history and favorites, parental PIN locks on playlists, offline downloads of movies and episodes, and TMDB metadata enrichment.</p>
+      <p>The core player and all playback functionality are free.</p>
+    </div>
+  </details>
+
+  <details class="faq-item">
+    <summary>How do I cancel my subscription?</summary>
+    <div class="answer">
+      <p>Subscriptions are managed by Apple, not Streamly. To cancel:</p>
+      <p>On iPhone/iPad: <strong>Settings → [your name] → Subscriptions → Streamly Pro → Cancel</strong>.</p>
+      <p>On Mac: <strong>App Store → click your profile → Account Settings → Manage Subscriptions → Streamly Pro → Cancel</strong>.</p>
+      <p>On Apple TV: <strong>Settings → Users and Accounts → [your name] → Subscriptions → Streamly Pro → Cancel</strong>.</p>
+      <p>You keep Pro access until the end of your current billing period.</p>
+    </div>
+  </details>
+
+  <details class="faq-item">
+    <summary>Can I get a refund?</summary>
+    <div class="answer">
+      <p>Refunds are handled by Apple per Apple's refund policy. To request one: visit <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>, sign in with your Apple ID, find the Streamly purchase, and request a refund. Apple typically responds within 48 hours.</p>
+      <p>The Lifetime purchase is also refundable through this same process within the standard Apple refund window.</p>
+    </div>
+  </details>
+
+  <details class="faq-item">
+    <summary>What happens if I let my subscription lapse?</summary>
+    <div class="answer">
+      <p>Your Pro features (multiple playlists, downloads, PIN locks, etc.) become Free-tier again, but your data is preserved. If you re-subscribe, everything comes back exactly as it was.</p>
+      <p>If you exceed the Free-tier limits (3 playlists, 6 favorites), the extras are kept but locked until you re-subscribe or remove them.</p>
+    </div>
+  </details>
+</div>
+
+<div class="faq-section-title">Privacy &amp; account</div>
+<div class="faq-list">
+  <details class="faq-item">
+    <summary>Do I need an account to use Streamly?</summary>
+    <div class="answer">
+      <p>No. The full player works without signing in. You only need an account if you want cross-device sync (Pro feature) of your playlists, favorites, and watch history.</p>
+    </div>
+  </details>
+
+  <details class="faq-item">
+    <summary>How do I delete my account and data?</summary>
+    <div class="answer">
+      <p>In-app: <strong>Menu → Account → Delete Account</strong>. This permanently deletes your Firestore document (cross-device sync data) and signs you out everywhere.</p>
+      <p>Local data on your device (playlists in Keychain, favorites in the local DB, watch history) is removed when you uninstall the app.</p>
+      <p>Your Apple ID and any active subscriptions are not affected; you'd cancel those separately in Settings.</p>
+    </div>
+  </details>
+
+  <details class="faq-item">
+    <summary>Where are my IPTV credentials stored?</summary>
+    <div class="answer">
+      <p>In the iOS / macOS / tvOS Keychain, encrypted by the operating system. Streamly never sends your credentials to its own servers.</p>
+      <p>If you enable Pro sync, they're also stored in your own private Firestore document (encrypted at rest and in transit, isolated to your Apple ID).</p>
+    </div>
+  </details>
+</div>
+
+<div class="contact-card">
+  <h2>Didn't find your answer?</h2>
+  <p>Email us. Real human replies, usually within 24 hours.</p>
+  <a href="mailto:streamlyiptvpro@gmail.com" class="btn primary">Contact Support</a>
+</div>
+
+<footer class="site-footer">
+  <div class="inner">
+    <div class="brand">
+      <a href="index.html" class="logo-img">
+        <img src="assets/logo-horizontal.png" alt="Streamly">
+      </a>
+      <p>© 2026 Streamly · Built by Yasser Farag</p>
+    </div>
+    <div class="links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+      <a href="support.html">Support</a>
+      <a href="mailto:streamlyiptvpro@gmail.com">Contact</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

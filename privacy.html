@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy · Streamly</title>
+<meta name="description" content="Streamly's privacy policy. What data we collect, how we use it, and your rights.">
+<meta name="theme-color" content="#0A0612">
+<link rel="icon" type="image/png" sizes="256x256" href="assets/app-icon-256.png">
+<link rel="apple-touch-icon" href="assets/app-icon-256.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="logo-img" aria-label="Streamly home">
+    <img src="assets/logo-horizontal.png" alt="Streamly">
+  </a>
+  <div class="nav-links">
+    <a href="index.html#features">Features</a>
+    <a href="index.html#pricing">Pricing</a>
+    <a href="support.html">Support</a>
+  </div>
+  <a href="#" class="cta">⬇ Download</a>
+</nav>
+
+<article class="legal-page">
+  <h1>Privacy Policy</h1>
+  <div class="meta">Effective date: 2026-05-15 · Last updated: 2026-05-15</div>
+
+  <p>Streamly ("we", "us", "our") respects your privacy. This Privacy Policy explains what data the Streamly mobile, tablet, TV, and desktop applications ("the App") collect, how it is used, and the choices you have. By installing or using the App you agree to the practices described here.</p>
+  <p>If you have questions, contact us at <a href="mailto:streamlyiptvpro@gmail.com">streamlyiptvpro@gmail.com</a>.</p>
+
+  <h2>1. Who we are</h2>
+  <p>The App is developed and operated by Yasser Farag (Apple Developer Team ID: M7GK7B47H6), an individual developer based in Egypt.</p>
+
+  <h2>2. What Streamly does (and does not do)</h2>
+  <p>Streamly is an IPTV player. You provide your own M3U playlists or Xtream Codes portal credentials, and the App fetches and plays whatever your source serves.</p>
+  <p>Streamly does not host, distribute, encode, or sell any video content. Every stream URL is supplied by you. The App is a client; the responsibility for the content you load into it sits with you and your IPTV provider.</p>
+
+  <h2>3. Data we collect</h2>
+  <h3>3.1 Information you provide</h3>
+  <ul>
+    <li><strong>Account info (optional)</strong> — email address and display name from Sign in with Apple or Google Sign-In. Stored in Firebase Authentication (Google Cloud).</li>
+    <li><strong>Playlist sources</strong> — M3U file URLs, Xtream Codes server URL + username + password. Stored in the encrypted iOS / macOS / tvOS Keychain on-device, plus your Firestore backup if signed in.</li>
+    <li><strong>Favorites, recently watched, custom display preferences</strong> — channel / movie / series IDs you mark as favorites, resume positions. Stored in the local Realm DB on-device (and your Firestore document on the Pro tier).</li>
+    <li><strong>In-app purchases</strong> — subscription / lifetime purchase receipts and entitlement state. Processed by RevenueCat and Apple StoreKit.</li>
+  </ul>
+
+  <h3>3.2 Information collected automatically</h3>
+  <ul>
+    <li><strong>Diagnostic data</strong> — crash logs, stack traces, non-fatal errors. Used to fix crashes and bugs. Processor: Firebase Crashlytics.</li>
+    <li><strong>Performance metrics</strong> — app start time, screen render time, network request latency. Used to detect performance regressions. Processor: Firebase Performance Monitoring.</li>
+    <li><strong>Product analytics</strong> — anonymous event counts (screen opened, button tapped, paywall shown). Used to understand which features are used. Processor: Firebase Analytics.</li>
+    <li><strong>Remote configuration</strong> — app config values delivered to your device. Used to roll out features without an App Store update. Processor: Firebase Remote Config.</li>
+    <li><strong>Subscription analytics</strong> — anonymous purchase + churn events. Used to measure conversion and retention. Processor: RevenueCat.</li>
+    <li><strong>Device identifiers</strong> — Firebase Installation ID, RevenueCat anonymous user ID, device model, OS version, app version, locale. Used to group events from the same install for debugging.</li>
+  </ul>
+
+  <p>We do <strong>not</strong> collect:</p>
+  <ul>
+    <li>Your precise or coarse location;</li>
+    <li>Your contacts, photos, calendar, or health data;</li>
+    <li>Advertising identifiers (IDFA) — Streamly contains no advertising SDKs;</li>
+    <li>Stream playback history with any third party — playback events stay local on your device unless you are on the Pro tier and signed in, in which case watch history is synced privately to your own Firestore document;</li>
+    <li>Your voice recordings — voice search uses Apple's SFSpeechRecognizer, which processes audio on-device when available and otherwise sends it to Apple per Apple's privacy practices. Streamly does not record, store, or transmit voice audio to its own servers.</li>
+  </ul>
+
+  <h2>4. How we use your data</h2>
+  <ul>
+    <li><strong>Operate the App</strong> — fulfill features you request (load playlists, remember favorites, restore playback position).</li>
+    <li><strong>Sync across your devices</strong> — Pro users get cross-device sync of playlists, favorites, and history via their own private Firestore documents. Free users get a one-way playlist backup so a reinstall can restore playlists.</li>
+    <li><strong>Authenticate purchases</strong> — verify your subscription / lifetime entitlement.</li>
+    <li><strong>Fix bugs and improve quality</strong> — crash and performance reports are used to triage issues.</li>
+    <li><strong>Measure feature usage</strong> — anonymous, aggregated analytics help us decide which features to invest in.</li>
+    <li><strong>Comply with legal obligations</strong> — including subscription receipt verification with Apple.</li>
+  </ul>
+
+  <p>We do <strong>not</strong>:</p>
+  <ul>
+    <li>Sell your data;</li>
+    <li>Share your data with advertisers;</li>
+    <li>Use your data to build profiles for marketing purposes.</li>
+  </ul>
+
+  <h2>5. Legal basis for processing (GDPR)</h2>
+  <p>If you are in the EEA / UK, our legal bases are:</p>
+  <ul>
+    <li><strong>Contract performance</strong> — for data needed to deliver the App's core functionality (account, playlists, purchases).</li>
+    <li><strong>Legitimate interest</strong> — for crash reporting, performance monitoring, and aggregated analytics, with safeguards to keep these privacy-preserving.</li>
+    <li><strong>Consent</strong> — for any data collection that is not strictly necessary. You can withdraw consent at any time in Settings.</li>
+  </ul>
+
+  <h2>6. Sharing with third parties</h2>
+  <p>We share data only with the sub-processors listed below, each bound by their own privacy and security commitments:</p>
+  <ul>
+    <li><strong>Google (Firebase)</strong> — Auth, Crashlytics, Performance, Analytics, Remote Config, Firestore. Multi-region (US / EU). Privacy policy: <a href="https://firebase.google.com/support/privacy">firebase.google.com/support/privacy</a></li>
+    <li><strong>RevenueCat</strong> — subscription state management. US. Privacy policy: <a href="https://www.revenuecat.com/privacy">revenuecat.com/privacy</a></li>
+    <li><strong>Apple</strong> — Sign in with Apple, StoreKit purchase processing, Speech recognition. Privacy policy: <a href="https://www.apple.com/legal/privacy/">apple.com/legal/privacy</a></li>
+    <li><strong>Google Sign-In</strong> — optional sign-in flow. US. Privacy policy: <a href="https://policies.google.com/privacy">policies.google.com/privacy</a></li>
+  </ul>
+  <p>We do not share data with anyone else. We will only disclose data to law enforcement or third parties if compelled by valid legal process in the jurisdiction where we operate.</p>
+
+  <h2>7. International data transfers</h2>
+  <p>Some of our sub-processors (Firebase, RevenueCat) may process data in the United States. Where required, we rely on Standard Contractual Clauses or the equivalent regulator-approved transfer mechanism for transfers out of the EEA / UK.</p>
+
+  <h2>8. Data retention</h2>
+  <ul>
+    <li>Local on-device data (playlists, favorites, history) — until you delete the playlist, clear history, or uninstall the App.</li>
+    <li>Firestore-synced data (Pro) — until you delete your account or sign out and request deletion.</li>
+    <li>Crashlytics crash reports — 90 days (Firebase default).</li>
+    <li>Firebase Analytics events — 14 months (Firebase default).</li>
+    <li>RevenueCat purchase records — as required for subscription management and refund / dispute handling.</li>
+  </ul>
+
+  <h2>9. Your rights</h2>
+  <p>Subject to applicable law (GDPR, UK GDPR, CCPA, and others), you have the right to:</p>
+  <ul>
+    <li>Access the personal data we hold about you;</li>
+    <li>Correct inaccurate data;</li>
+    <li>Delete your data — including a complete account deletion in-app via Settings → Account → Delete Account;</li>
+    <li>Export your data in a machine-readable format;</li>
+    <li>Object to or restrict processing;</li>
+    <li>Withdraw consent at any time.</li>
+  </ul>
+  <p>To exercise any of these rights, email <a href="mailto:streamlyiptvpro@gmail.com">streamlyiptvpro@gmail.com</a> with the subject line "Privacy Request — {your Apple ID email}". We respond within 30 days.</p>
+  <p><strong>California residents (CCPA):</strong> we do not sell personal information. You have the right to know, delete, and not be discriminated against for exercising your rights.</p>
+
+  <h2>10. Children's privacy</h2>
+  <p>Streamly is not directed at children under 13 (under 16 in the EEA). We do not knowingly collect personal data from children. If you believe a child has provided us data, contact <a href="mailto:streamlyiptvpro@gmail.com">streamlyiptvpro@gmail.com</a> and we will delete it.</p>
+
+  <h2>11. Security</h2>
+  <ul>
+    <li>Xtream Codes credentials are stored in the iOS / macOS / tvOS Keychain, encrypted by the operating system.</li>
+    <li>The local Realm database is encrypted at rest.</li>
+    <li>All network traffic to our sub-processors uses HTTPS.</li>
+    <li>We do not store your IPTV provider credentials on our servers — only on your device's Keychain (and in your private Firestore document if you enable Pro sync).</li>
+  </ul>
+  <p>No system is perfectly secure. If you believe your data may have been compromised, contact us immediately.</p>
+
+  <h2>12. App Transport Security exemption</h2>
+  <p>Streamly disables App Transport Security restrictions (NSAllowsArbitraryLoads) so it can play streams from IPTV providers who still serve over plain HTTP. This exemption applies only to the stream URLs you choose to load. All Streamly-controlled traffic (authentication, sync, analytics, purchase validation) uses HTTPS.</p>
+
+  <h2>13. Changes to this policy</h2>
+  <p>We may update this policy. Material changes will be highlighted in the App and on this page; the "Last updated" date will change. Continued use of the App after a change constitutes acceptance.</p>
+
+  <h2>14. Contact</h2>
+  <p>Email: <a href="mailto:streamlyiptvpro@gmail.com">streamlyiptvpro@gmail.com</a><br/>
+  Developer: Yasser Farag<br/>
+  Apple Developer Team ID: M7GK7B47H6</p>
+</article>
+
+<footer class="site-footer">
+  <div class="inner">
+    <div class="brand">
+      <a href="index.html" class="logo-img">
+        <img src="assets/logo-horizontal.png" alt="Streamly">
+      </a>
+      <p>© 2026 Streamly · Built by Yasser Farag</p>
+    </div>
+    <div class="links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+      <a href="support.html">Support</a>
+      <a href="mailto:streamlyiptvpro@gmail.com">Contact</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

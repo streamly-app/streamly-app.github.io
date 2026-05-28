@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Streamly — Your IPTV. Beautifully played.</title>
+<meta name="description" content="Streamly is a beautifully crafted IPTV media player for iPhone, iPad, Apple TV, and Mac. Bring your M3U or Xtream Codes playlist — we bring the player.">
+<meta property="og:title" content="Streamly — Your IPTV. Beautifully played.">
+<meta property="og:description" content="A stunning media player for the playlists you already own.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/app-icon-1024.png">
+<meta name="theme-color" content="#0A0612">
+<link rel="icon" type="image/png" sizes="256x256" href="assets/app-icon-256.png">
+<link rel="apple-touch-icon" href="assets/app-icon-256.png">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* Page-specific styles */
+
+/* Hero */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  padding: 130px 40px 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero-inner { max-width: 1100px; position: relative; z-index: 2; }
+.hero .eyebrow { color: var(--accent); font-size: 13px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 24px; }
+.hero h1 { font-size: clamp(48px, 8vw, 96px); font-weight: 800; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 24px; }
+.hero h1 .accent {
+  background: linear-gradient(135deg, var(--accent), #F87171);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero p.sub { font-size: clamp(18px, 2vw, 22px); color: var(--text-2); max-width: 700px; margin: 0 auto 40px; line-height: 1.5; }
+.hero .ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 56px; }
+.hero .hero-tv-wrap {
+  display: flex; justify-content: center;
+  position: relative;
+  margin-top: 40px;
+}
+.hero .hero-tv-wrap::before {
+  content: '';
+  position: absolute;
+  inset: -80px;
+  background: radial-gradient(circle, rgba(220,38,38,0.18) 0%, transparent 60%);
+  z-index: -1;
+}
+
+/* Intro */
+.intro { padding: 80px 40px; max-width: 900px; margin: 0 auto; text-align: center; }
+.intro p { font-size: clamp(20px, 2.2vw, 28px); color: var(--text-2); line-height: 1.5; letter-spacing: -0.01em; }
+.intro p strong { color: var(--text); font-weight: 700; }
+
+/* Platforms showcase — iPhone + Apple TV carousels side-by-side */
+.platforms { padding: 80px 40px 120px; max-width: 1320px; margin: 0 auto; }
+.platforms .header { text-align: center; margin-bottom: 80px; }
+.platforms .header .eyebrow { color: var(--accent); font-size: 13px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 16px; }
+.platforms .header h2 { font-size: clamp(36px, 5vw, 60px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 16px; }
+.platforms .header p { color: var(--text-2); font-size: 18px; max-width: 640px; margin: 0 auto; line-height: 1.5; }
+.platforms .grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.platforms .device-block { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+.platforms .device-block .label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--text);
+  padding: 6px 14px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+}
+.platforms .device-block .label::before {
+  content: ''; width: 6px; height: 6px; background: var(--accent); border-radius: 50%;
+}
+.platforms .phone-frame { max-width: 280px; }
+.platforms .tv-frame    { max-width: 560px; }
+
+/* Feature section visual side — centers the phone or TV */
+section.feature-section .visual {
+  display: flex; justify-content: center; align-items: center;
+  position: relative;
+  min-height: 500px;
+}
+section.feature-section .visual::before {
+  content: '';
+  position: absolute;
+  inset: 20px;
+  background: radial-gradient(circle at center, rgba(220,38,38,0.15) 0%, transparent 65%);
+  z-index: -1;
+  filter: blur(20px);
+}
+/* Apple TV mockup gets a wider visual area than the phone */
+section.feature-section .visual.tv { min-height: 380px; }
+section.feature-section .visual.tv .tv-frame { max-width: 620px; }
+
+/* Why Streamly */
+.why { padding: 100px 40px; }
+.why .inner { max-width: 1200px; margin: 0 auto; }
+.why h2 { font-size: clamp(36px, 5vw, 56px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; max-width: 800px; margin-bottom: 60px; }
+.why .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.why-card { background: rgba(24,10,40,0.5); border: 1px solid var(--border); border-radius: 20px; padding: 32px; backdrop-filter: blur(20px); }
+.why-card .icon { width: 48px; height: 48px; border-radius: 12px; background: rgba(220,38,38,0.15); display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 20px; }
+.why-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.01em; }
+.why-card p { color: var(--text-2); font-size: 15px; line-height: 1.6; }
+
+/* Pricing */
+.pricing { padding: 100px 40px; }
+.pricing .inner { max-width: 1200px; margin: 0 auto; }
+.pricing .header { text-align: center; margin-bottom: 56px; }
+.pricing .header .eyebrow { color: var(--accent); font-size: 13px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 16px; }
+.pricing .header h2 { font-size: clamp(36px, 5vw, 56px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 16px; }
+.pricing .header p { color: var(--text-2); font-size: 18px; max-width: 600px; margin: 0 auto; }
+.pricing .plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1100px; margin: 0 auto; }
+.plan { background: rgba(24,10,40,0.5); border: 1px solid var(--border); border-radius: 20px; padding: 40px 32px; backdrop-filter: blur(20px); display: flex; flex-direction: column; }
+.plan.featured { background: linear-gradient(145deg, rgba(220,38,38,0.15), rgba(24,10,40,0.6)); border-color: rgba(220,38,38,0.3); transform: scale(1.03); position: relative; }
+.plan.featured .badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--accent); color: white; padding: 5px 14px; border-radius: 100px; font-size: 11px; font-weight: 700; letter-spacing: 0.05em; }
+.plan .name { font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); margin-bottom: 16px; }
+.plan.featured .name { color: var(--accent-light); }
+.plan .price { font-size: 48px; font-weight: 800; letter-spacing: -0.03em; }
+.plan .price .currency { font-size: 24px; vertical-align: super; }
+.plan .period { color: var(--text-3); font-size: 14px; margin-top: 4px; margin-bottom: 24px; }
+.plan ul { list-style: none; flex: 1; margin-bottom: 32px; }
+.plan li { padding: 8px 0; font-size: 14px; color: var(--text-2); display: flex; gap: 8px; align-items: flex-start; }
+.plan li::before { content: '✓'; color: var(--accent); flex-shrink: 0; }
+.plan .cta { text-align: center; padding: 12px; border-radius: 10px; font-size: 14px; font-weight: 600; }
+.plan .cta.outline { background: transparent; border: 1px solid var(--border-strong); color: var(--text); }
+.plan .cta.solid { background: var(--accent); color: white; }
+
+/* Bottom CTA */
+.bottom-cta { padding: 120px 40px; text-align: center; max-width: 800px; margin: 0 auto; }
+.bottom-cta h2 { font-size: clamp(36px, 5vw, 64px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 24px; }
+.bottom-cta h2 .accent { background: linear-gradient(135deg, var(--accent), var(--accent-light)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.bottom-cta p { color: var(--text-2); font-size: 18px; margin-bottom: 40px; }
+
+@media (max-width: 900px) {
+  .platforms .grid { grid-template-columns: 1fr; gap: 60px; }
+  .platforms .tv-frame { max-width: 100%; }
+}
+@media (max-width: 768px) {
+  .hero { padding: 90px 20px 40px; }
+  .intro { padding: 40px 20px; }
+  .platforms { padding: 60px 20px 80px; }
+  section.feature-section .visual { min-height: auto; }
+  .phone-frame.hero-phone { max-width: 260px; transform: none; }
+  .why { padding: 60px 20px; }
+  .why .grid { grid-template-columns: 1fr; }
+  .pricing { padding: 60px 20px; }
+  .pricing .plans { grid-template-columns: 1fr; }
+  .plan.featured { transform: none; }
+  .bottom-cta { padding: 80px 20px; }
+  .app-store-badge { height: 48px; }
+  .phone-duo { min-height: 480px; }
+  .phone-duo .phone-frame { max-width: 200px; }
+  .phone-duo .phone-frame.back { transform: translate(-50px, -20px) rotate(-6deg); }
+  .phone-duo .phone-frame.front { transform: translate(50px, 20px) rotate(4deg); }
+}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="/" class="logo-img" aria-label="Streamly home">
+    <img src="assets/logo-horizontal.png" alt="Streamly">
+  </a>
+  <div class="nav-links">
+    <a href="#platforms">Platforms</a>
+    <a href="#features">Features</a>
+    <a href="#pricing">Pricing</a>
+    <a href="support.html">Support</a>
+  </div>
+  <a href="#" class="cta">⬇ Download</a>
+</nav>
+
+<!-- ───────── HERO ───────── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">For iPhone · iPad · Apple TV · Mac</div>
+    <h1>Bring your IPTV.<br/><span class="accent">Beautifully played.</span></h1>
+    <p class="sub">Streamly is a stunning media player for the playlists you already own. M3U or Xtream Codes — plug in, play, enjoy.</p>
+    <div class="ctas">
+      <a href="#" aria-label="Download on the App Store">
+        <img src="assets/app-store-badge.svg" alt="Download on the App Store" class="app-store-badge">
+      </a>
+      <a href="#platforms" class="btn secondary large">▶ See it in action</a>
+    </div>
+    <div class="hero-tv-wrap">
+      <div class="tv-frame large">
+        <img src="assets/appletv-home.png" alt="Streamly home screen on Apple TV">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── INTRO ───────── -->
+<section class="intro">
+  <p><strong>Streamly is a player, not a service.</strong> You bring the channels (M3U, Xtream Codes). We bring a beautifully crafted UI for iPhone, iPad, Apple TV, and Mac. Nothing is hosted on our servers; nothing is curated for you.</p>
+</section>
+
+<!-- ───────── PLATFORMS — IPHONE + APPLE TV CAROUSELS ───────── -->
+<section class="platforms" id="platforms">
+  <div class="header">
+    <div class="eyebrow">Native everywhere</div>
+    <h2>Built specifically for every Apple device.</h2>
+    <p>Same brand. Same playlist. Same Continue Watching. But the UI is tuned to the screen — focus-engine first on Apple TV, gesture-friendly on iPhone, mouse-and-keyboard precise on Mac.</p>
+  </div>
+  <div class="grid">
+
+    <!-- Apple TV carousel (larger, the showcase device) -->
+    <div class="device-block">
+      <div class="label">Apple TV</div>
+      <div class="carousel-wrapper">
+        <div class="tv-frame">
+          <div class="carousel-track" data-carousel data-autoplay="5000">
+            <img class="carousel-slide active" src="assets/appletv-home.png"                    alt="Home"               data-caption="Home — hero cards + Continue Watching">
+            <img class="carousel-slide"        src="assets/appletv-livechannels.png"            alt="Live Channels"      data-caption="Live Channels — broadcast-style grid">
+            <img class="carousel-slide"        src="assets/appletv-movies.png"                  alt="Movies grid"        data-caption="Movies — category sidebar + poster grid">
+            <img class="carousel-slide"        src="assets/appletv-moviedetails.png"            alt="Movie details"      data-caption="Movie details — cast, synopsis, Watch">
+            <img class="carousel-slide"        src="assets/appletv-series-continuewatching.png" alt="Series Continue Watching" data-caption="Series — Continue Watching hero">
+            <img class="carousel-slide"        src="assets/appletv-series.png"                  alt="Series Featured"    data-caption="Series — Trending in your country">
+          </div>
+        </div>
+        <div class="carousel-caption" data-carousel-caption></div>
+        <div class="carousel-dots" data-carousel-dots></div>
+      </div>
+    </div>
+
+    <!-- iPhone carousel -->
+    <div class="device-block">
+      <div class="label">iPhone</div>
+      <div class="carousel-wrapper">
+        <div class="phone-frame">
+          <div class="carousel-track" data-carousel data-autoplay="4500">
+            <img class="carousel-slide active" src="assets/iphone-home.png"           alt="Home"           data-caption="Home — hero cards + rails">
+            <img class="carousel-slide"        src="assets/iphone-favorites.png"      alt="Live Channels"  data-caption="Live Channels — channel grid">
+            <img class="carousel-slide"        src="assets/iphone-movies.png"         alt="Movies"         data-caption="Movies — poster grid">
+            <img class="carousel-slide"        src="assets/iphone-movie-details.png"  alt="Movie details"  data-caption="Movie details — TMDB-enriched">
+            <img class="carousel-slide"        src="assets/iphone-series-details.png" alt="Series details" data-caption="Series details — episode picker">
+            <img class="carousel-slide"        src="assets/iphone-search.png"         alt="Search"         data-caption="Advanced search — voice or text">
+            <img class="carousel-slide"        src="assets/iphone-playlists.png"      alt="Playlists"      data-caption="Playlists — M3U or Xtream import">
+          </div>
+        </div>
+        <div class="carousel-caption" data-carousel-caption></div>
+        <div class="carousel-dots" data-carousel-dots></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ───────── LIVE CHANNELS ───────── -->
+<section class="feature-section" id="features">
+  <div class="inner">
+    <div class="copy">
+      <div class="eyebrow">Live channels</div>
+      <h2>Live TV the way it should be.</h2>
+      <p>A cinematic broadcast-style grid. Per-channel vibrant glow. Pulsing red <em>LIVE</em> indicator. Channel logos auto-sized for any aspect ratio. On Apple TV: focus-engine native, lean-back ready.</p>
+      <ul>
+        <li>Browse by category from a focus-friendly sidebar</li>
+        <li>Favorite the channels you love (gated to 6 on Free, unlimited on Pro)</li>
+        <li>"Recently Watched" rail at the top of the grid</li>
+        <li>Tap to play. No detail page — straight to the stream.</li>
+      </ul>
+    </div>
+    <div class="visual tv">
+      <div class="tv-frame">
+        <img src="assets/appletv-livechannels.png" alt="Streamly live channels on Apple TV">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── MOVIES ───────── -->
+<section class="feature-section reverse">
+  <div class="inner">
+    <div class="copy">
+      <div class="eyebrow">Movies</div>
+      <h2>Your library, beautifully presented.</h2>
+      <p>Cinematic hero artwork. Cast and crew. Plot synopsis. TMDB-powered metadata wraps your raw playlist in a presentation that feels like a streaming service.</p>
+      <ul>
+        <li>2:3 poster grid with focus halo on Apple TV</li>
+        <li>Continue Watching rail above the category grid</li>
+        <li>Tap any poster for full TMDB-enriched details</li>
+        <li>Featured page: Top Picks · Trending in Your Country · Best in Genre</li>
+      </ul>
+    </div>
+    <div class="visual tv">
+      <div class="tv-frame">
+        <img src="assets/appletv-moviedetails.png" alt="Streamly movie details on Apple TV">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── SERIES ───────── -->
+<section class="feature-section">
+  <div class="inner">
+    <div class="copy">
+      <div class="eyebrow">Series</div>
+      <h2>Series done the way Apple TV+ does it.</h2>
+      <p>Episode stills, watch progress, auto-advance to the next episode. Pull the season picker. Resume from any device.</p>
+      <ul>
+        <li>TMDB episode stills, air dates, ratings, synopsis</li>
+        <li>Watched ✓ badge on completed episodes</li>
+        <li>Red progress arc on episodes you're mid-way through</li>
+        <li>"Up Next" countdown card 30 seconds before each episode ends</li>
+      </ul>
+    </div>
+    <div class="visual tv">
+      <div class="tv-frame">
+        <img src="assets/appletv-series-continuewatching.png" alt="Streamly series Continue Watching on Apple TV">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── SEARCH ───────── -->
+<section class="feature-section reverse">
+  <div class="inner">
+    <div class="copy">
+      <div class="eyebrow">Search</div>
+      <h2>Find anything. Even faster with your voice.</h2>
+      <p>Instant fuzzy search across Live, Movies, and Series. Voice-driven on Apple TV via Siri. No tedious on-screen keyboard.</p>
+      <ul>
+        <li>Single search field, results sectioned by content type</li>
+        <li>Searches title, cast, and overview</li>
+        <li>Voice search on Apple TV (built into the Search tab)</li>
+        <li>Sub-50ms results across a 30K-title catalog</li>
+      </ul>
+    </div>
+    <div class="visual">
+      <div class="phone-frame">
+        <img src="assets/iphone-search.png" alt="Streamly advanced search">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── RECOMMENDATIONS ───────── -->
+<section class="feature-section">
+  <div class="inner">
+    <div class="copy">
+      <div class="eyebrow">Recommendations</div>
+      <h2>Smart picks, learned from your taste.</h2>
+      <p>The more you watch, the better Streamly knows what you'll love. Personalized rails built from your local watch history — no data leaves your device unless you sign in for Pro sync.</p>
+      <ul>
+        <li>Continue Watching — pick up exactly where you left off</li>
+        <li>Top Picks for You — algorithm-driven from your watch persona</li>
+        <li>Trending in Your Country — refreshed daily via TMDB</li>
+        <li>Because You Watched — instant tie-ins from your history</li>
+      </ul>
+    </div>
+    <div class="visual">
+      <div class="rail-stack">
+        <img src="assets/rail-continue-watching.png" alt="Continue Watching rail">
+        <img src="assets/rail-top-picks.png" alt="Top Picks for You rail">
+        <img src="assets/rail-trending.png" alt="Trending in your country rail">
+        <img src="assets/rail-because-you-watched.png" alt="Because You Watched rail">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── DOWNLOADS (NEW) ───────── -->
+<section class="feature-section reverse">
+  <div class="inner">
+    <div class="copy">
+      <div class="eyebrow">Downloads</div>
+      <h2>Take it offline. Watch anywhere.</h2>
+      <p>Save movies and episodes for the plane, the car, the cabin. Streamly's smart downloader manages your storage, queues by Wi-Fi, and keeps you a few episodes ahead automatically.</p>
+      <ul>
+        <li><strong>Wi-Fi only</strong> by default — never blow through your cellular plan by accident</li>
+        <li><strong>Smart Downloads</strong> — keeps a configurable number of unwatched episodes ready</li>
+        <li><strong>Storage cap</strong> — set a hard ceiling (default 10 GB), oldest watched item evicts first</li>
+        <li><strong>Concurrent downloads</strong> — tune how many run in parallel based on your connection</li>
+      </ul>
+    </div>
+    <div class="visual">
+      <img src="assets/iphone-offline.png" alt="Streamly Downloads — download and watch offline" style="max-width: 360px; width: 100%; height: auto; border-radius: 32px; box-shadow: 0 40px 80px rgba(0,0,0,0.65), 0 0 100px rgba(220,38,38,0.10);">
+    </div>
+  </div>
+</section>
+
+<!-- ───────── PLAYLISTS + QUICK ADD ───────── -->
+<section class="feature-section">
+  <div class="inner">
+    <div class="copy">
+      <div class="eyebrow">Playlists</div>
+      <h2>Bring any IPTV. In two taps.</h2>
+      <p>Paste an M3U URL or Xtream Codes credentials. Streamly parses, organizes, and remembers. Want to try Streamly first? <strong>Quick Add</strong> ships with public free-to-air channel lists you can activate in a single tap.</p>
+      <ul>
+        <li>M3U / M3U8 URL import with one-time parse</li>
+        <li>Xtream Codes username + password support</li>
+        <li>Quick Add — curated free public playlists to get you started</li>
+        <li>Multiple playlists, switchable in two taps (Pro)</li>
+        <li>Parental PIN locks at the playlist level (Pro)</li>
+      </ul>
+    </div>
+    <div class="visual">
+      <div class="phone-frame">
+        <img src="assets/iphone-playlists.png" alt="Streamly playlist management on iPhone">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── CROSS-DEVICE SYNC ───────── -->
+<section class="feature-section reverse">
+  <div class="inner">
+    <div class="copy">
+      <div class="eyebrow">Cross-device sync</div>
+      <h2>Pause on iPhone. Resume on Apple TV.</h2>
+      <p>Sign in once. Your watch progress, favorites, and playlists follow you across every device you sign into. Encrypted via Firebase, scoped to your account, never sold.</p>
+      <ul>
+        <li>Continue Watching syncs across iPhone, iPad, Apple TV, and Mac</li>
+        <li>Favorites and watch history move with your account (Pro)</li>
+        <li>Sign in with Apple — one tap, no passwords</li>
+        <li>Stays local-only on Free; sync activates with Pro</li>
+      </ul>
+    </div>
+    <div class="visual tv">
+      <div class="tv-frame">
+        <img src="assets/appletv-home.png" alt="Streamly home on Apple TV showing the Pro cross-device sync banner">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── WHY STREAMLY ───────── -->
+<section class="why">
+  <div class="inner">
+    <h2>Built right. Native everywhere.</h2>
+    <div class="grid">
+      <div class="why-card">
+        <div class="icon">⚡</div>
+        <h3>Hybrid playback engine</h3>
+        <p>VLC for live TV (handles weird codecs like HEVC-over-TS). Native AVPlayer for everything else. Automatic fallback on failure. You never see "codec not supported."</p>
+      </div>
+      <div class="why-card">
+        <div class="icon">📱</div>
+        <h3>Native on every screen</h3>
+        <p>Built specifically for iOS, iPadOS, tvOS, and macOS in SwiftUI. Focus-engine first on Apple TV. Pixel-perfect on iPhone. Mouse + keyboard on Mac. No web-app port.</p>
+      </div>
+      <div class="why-card">
+        <div class="icon">🛡️</div>
+        <h3>Your data, your device</h3>
+        <p>Streamly stores no streams. Your IPTV credentials live in the iOS Keychain. Watch history is local-only on Free; private Firestore sync on Pro. No ads. No tracking.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── PRICING ───────── -->
+<section class="pricing" id="pricing">
+  <div class="inner">
+    <div class="header">
+      <div class="eyebrow">Pricing</div>
+      <h2>Free or Pro. Your call.</h2>
+      <p>Streamly Free is fully functional. Pro adds sync, downloads, unlimited playlists, and parental locks.</p>
+    </div>
+    <div class="plans">
+      <div class="plan">
+        <div class="name">Free</div>
+        <div class="price"><span class="currency">$</span>0</div>
+        <div class="period">Forever</div>
+        <ul>
+          <li>Up to 3 playlists</li>
+          <li>All player features</li>
+          <li>Up to 6 favorites</li>
+          <li>Local watch history</li>
+          <li>AirPlay & Cast</li>
+        </ul>
+        <a href="#" class="cta outline">⬇ Download Free</a>
+      </div>
+      <div class="plan featured">
+        <div class="badge">Most popular</div>
+        <div class="name">Pro Annual</div>
+        <div class="price"><span class="currency">$</span>19.99</div>
+        <div class="period">/year · 7-day free trial · or $4.99/month</div>
+        <ul>
+          <li>Unlimited playlists & favorites</li>
+          <li>Cross-device watch sync</li>
+          <li>Parental PIN locks</li>
+          <li>Offline downloads</li>
+          <li>TMDB metadata enrichment</li>
+        </ul>
+        <a href="#" class="cta solid">Start free trial</a>
+      </div>
+      <div class="plan">
+        <div class="name">Lifetime</div>
+        <div class="price"><span class="currency">$</span>59.99</div>
+        <div class="period">One-time payment</div>
+        <ul>
+          <li>Everything in Pro</li>
+          <li>All future updates</li>
+          <li>No subscriptions to manage</li>
+          <li>Pay once, use forever</li>
+          <li>Best value if you stay 3+ years</li>
+        </ul>
+        <a href="#" class="cta outline">Buy Lifetime</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── BOTTOM CTA ───────── -->
+<section class="bottom-cta">
+  <h2>Ready when <span class="accent">you are.</span></h2>
+  <p>Free to download. Pro features when you need them.</p>
+  <a href="#" aria-label="Download on the App Store">
+    <img src="assets/app-store-badge.svg" alt="Download on the App Store" class="app-store-badge" style="height: 64px;">
+  </a>
+</section>
+
+<!-- ───────── FOOTER ───────── -->
+<footer class="site-footer">
+  <div class="inner">
+    <div class="brand">
+      <a href="/" class="logo-img">
+        <img src="assets/logo-horizontal.png" alt="Streamly">
+      </a>
+      <p>© 2026 Streamly · Built by Yasser Farag<br/>Apple Developer Team ID: M7GK7B47H6</p>
+    </div>
+    <div class="links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+      <a href="support.html">Support</a>
+      <a href="mailto:streamlyiptvpro@gmail.com">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script src="carousel.js" defer></script>
+</body>
+</html>
