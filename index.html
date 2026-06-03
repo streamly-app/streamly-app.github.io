@@ -161,6 +161,19 @@ section.feature-section .visual.tv .tv-frame { max-width: 620px; }
   .phone-duo .phone-frame.back { transform: translate(-50px, -20px) rotate(-6deg); }
   .phone-duo .phone-frame.front { transform: translate(50px, 20px) rotate(4deg); }
 }
+/* Launch announcement pill — Apple TV now live on the App Store */
+.hero .launch-pill {
+  display: inline-flex; align-items: center; gap: 10px;
+  margin-bottom: 24px; padding: 9px 18px; border-radius: 100px;
+  background: rgba(220,38,38,0.12); border: 1px solid rgba(220,38,38,0.38);
+  color: var(--text); font-size: 14px; font-weight: 600; letter-spacing: -0.01em;
+  transition: transform .2s, background .2s, border-color .2s;
+}
+.hero .launch-pill:hover { transform: translateY(-1px); background: rgba(220,38,38,0.18); border-color: rgba(220,38,38,0.6); color: var(--text); }
+.hero .launch-pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px rgba(220,38,38,0.22); }
+.hero .launch-pill strong { font-weight: 800; }
+.hero .launch-pill .arrow { color: var(--accent-light); font-weight: 700; }
+@media (max-width: 768px) { .hero .launch-pill { font-size: 13px; } }
 </style>
 </head>
 <body>
@@ -175,17 +188,20 @@ section.feature-section .visual.tv .tv-frame { max-width: 620px; }
     <a href="#pricing">Pricing</a>
     <a href="support.html">Support</a>
   </div>
-  <a href="#" class="cta">⬇ Download</a>
+  <a href="https://apps.apple.com/app/id6769753335" target="_blank" rel="noopener" class="cta">⬇ Download</a>
 </nav>
 
 <!-- ───────── HERO ───────── -->
 <section class="hero">
   <div class="hero-inner">
+    <a class="launch-pill" href="https://apps.apple.com/app/id6769753335" target="_blank" rel="noopener">
+      <span class="dot"></span> New — Streamly is now on <strong>Apple&nbsp;TV</strong> <span class="arrow">→</span>
+    </a>
     <div class="eyebrow">For iPhone · iPad · Apple TV · Mac</div>
     <h1>Bring your IPTV.<br/><span class="accent">Beautifully played.</span></h1>
     <p class="sub">Streamly is a stunning media player for the playlists you already own. M3U or Xtream Codes — plug in, play, enjoy.</p>
     <div class="ctas">
-      <a href="#" aria-label="Download on the App Store">
+      <a href="https://apps.apple.com/app/id6769753335" target="_blank" rel="noopener" aria-label="Download on the App Store">
         <img src="assets/app-store-badge.svg" alt="Download on the App Store" class="app-store-badge">
       </a>
       <a href="#platforms" class="btn secondary large">▶ See it in action</a>
@@ -476,7 +492,7 @@ section.feature-section .visual.tv .tv-frame { max-width: 620px; }
           <li>Local watch history</li>
           <li>AirPlay & Cast</li>
         </ul>
-        <a href="#" class="cta outline">⬇ Download Free</a>
+        <a href="https://apps.apple.com/app/id6769753335" target="_blank" rel="noopener" class="cta outline">⬇ Download Free</a>
       </div>
       <div class="plan featured">
         <div class="badge">Most popular</div>
@@ -490,7 +506,7 @@ section.feature-section .visual.tv .tv-frame { max-width: 620px; }
           <li>Offline downloads</li>
           <li>TMDB metadata enrichment</li>
         </ul>
-        <a href="#" class="cta solid">Start free trial</a>
+        <a href="https://apps.apple.com/app/id6769753335" target="_blank" rel="noopener" class="cta solid">Start free trial</a>
       </div>
       <div class="plan">
         <div class="name">Lifetime</div>
@@ -503,7 +519,7 @@ section.feature-section .visual.tv .tv-frame { max-width: 620px; }
           <li>Pay once, use forever</li>
           <li>Best value if you stay 3+ years</li>
         </ul>
-        <a href="#" class="cta outline">Buy Lifetime</a>
+        <a href="https://apps.apple.com/app/id6769753335" target="_blank" rel="noopener" class="cta outline">Buy Lifetime</a>
       </div>
     </div>
   </div>
@@ -513,7 +529,7 @@ section.feature-section .visual.tv .tv-frame { max-width: 620px; }
 <section class="bottom-cta">
   <h2>Ready when <span class="accent">you are.</span></h2>
   <p>Free to download. Pro features when you need them.</p>
-  <a href="#" aria-label="Download on the App Store">
+  <a href="https://apps.apple.com/app/id6769753335" target="_blank" rel="noopener" aria-label="Download on the App Store">
     <img src="assets/app-store-badge.svg" alt="Download on the App Store" class="app-store-badge" style="height: 64px;">
   </a>
 </section>
