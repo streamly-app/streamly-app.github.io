@@ -165,6 +165,15 @@ section.feature-section .copy ul li::before {
   box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 40px rgba(220,38,38,0.1);
 }
 
+/* Responsive-image safety net. The width/height attributes on each <img>
+   (added to reserve layout space and kill CLS) act as low-priority
+   presentational hints — without this they lock a fixed pixel height and the
+   framed screenshots render container-width × fixed-height (stretched).
+   height:auto restores proportional scaling. Carousel slides (height:100% +
+   object-fit:cover), logos and App Store badges set their own height at higher
+   specificity, so they are unaffected. */
+img { height: auto; }
+
 /* Phone frame — wraps an iPhone screenshot so it looks like a real device */
 .phone-frame {
   display: inline-block;
