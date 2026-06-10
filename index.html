@@ -220,6 +220,18 @@ section.feature-section .visual.tv .tv-frame { max-width: 620px; }
 .hero .launch-pill strong { font-weight: 800; }
 .hero .launch-pill .arrow { color: var(--accent-light); font-weight: 700; }
 @media (max-width: 768px) { .hero .launch-pill { font-size: 13px; } }
+
+/* Promo video */
+.promo-video { max-width: 960px; margin: 0 auto; padding: 48px 24px 8px; text-align: center; }
+.promo-video h2 { font-size: clamp(28px, 4vw, 44px); margin: 0 0 24px; }
+.video-frame { position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 18px; overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,0.45); border: 1px solid rgba(255,255,255,0.08); }
+.video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+/* Store badge row + TV apps sub-line */
+.store-badges { display: inline-flex; gap: 16px; flex-wrap: wrap; justify-content: center; align-items: center; }
+.store-subline { color: rgba(255,255,255,0.6); font-size: 14px; margin-top: 14px; }
+.store-subline a { color: var(--accent-light); text-decoration: none; font-weight: 600; }
+.store-subline a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
@@ -240,23 +252,46 @@ section.feature-section .visual.tv .tv-frame { max-width: 620px; }
 <!-- ───────── HERO ───────── -->
 <section class="hero">
   <div class="hero-inner">
-    <a class="launch-pill" href="https://apps.apple.com/app/id6769753335" target="_blank" rel="noopener">
-      <span class="dot"></span> New — Streamly is now on <strong>Apple&nbsp;TV</strong> <span class="arrow">→</span>
+    <a class="launch-pill" href="https://play.google.com/store/apps/details?id=com.streamly.iptv.app" target="_blank" rel="noopener">
+      <span class="dot"></span> New — Streamly is now on <strong>Android &amp; Android&nbsp;TV</strong> <span class="arrow">→</span>
     </a>
-    <div class="eyebrow">For iPhone · iPad · Apple TV · Mac</div>
+    <div class="eyebrow">For iPhone · iPad · Mac · Apple TV · Android · Android TV</div>
     <h1>Bring your IPTV.<br/><span class="accent">Beautifully played.</span></h1>
     <p class="sub">Streamly is a stunning media player for the playlists you already own. M3U or Xtream Codes — plug in, play, enjoy.</p>
     <div class="ctas">
       <a href="https://apps.apple.com/app/id6769753335" target="_blank" rel="noopener" aria-label="Download on the App Store">
         <img src="assets/app-store-badge.svg" alt="Download on the App Store" class="app-store-badge">
       </a>
-      <a href="#platforms" class="btn secondary large">▶ See it in action</a>
+      <a href="https://play.google.com/store/apps/details?id=com.streamly.iptv.app" target="_blank" rel="noopener" aria-label="Get it on Google Play">
+        <img src="assets/google-play-badge.svg" alt="Get it on Google Play" class="app-store-badge">
+      </a>
+      <a href="#video" class="btn secondary large">▶ See it in action</a>
     </div>
+    <p class="store-subline">
+      Big screen? Also on
+      <a href="https://apps.apple.com/app/id6769753335" target="_blank" rel="noopener">Apple&nbsp;TV</a>
+      and
+      <a href="https://play.google.com/store/apps/details?id=com.streamly.iptv.tv" target="_blank" rel="noopener">Android&nbsp;TV</a>.
+    </p>
     <div class="hero-tv-wrap">
       <div class="tv-frame large">
         <img src="assets/appletv-home.webp" alt="Streamly home screen on Apple TV" width="1920" height="1080" fetchpriority="high">
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ───────── PROMO VIDEO ───────── -->
+<section class="promo-video" id="video">
+  <h2>See Streamly <span class="accent">in action.</span></h2>
+  <div class="video-frame">
+    <iframe
+      src="https://www.youtube-nocookie.com/embed/I27tet9113M"
+      title="Streamly — promo video"
+      loading="lazy"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen></iframe>
   </div>
 </section>
 
@@ -577,9 +612,20 @@ section.feature-section .visual.tv .tv-frame { max-width: 620px; }
 <section class="bottom-cta">
   <h2>Ready when <span class="accent">you are.</span></h2>
   <p>Free to download. Pro features when you need them.</p>
-  <a href="https://apps.apple.com/app/id6769753335" target="_blank" rel="noopener" aria-label="Download on the App Store">
-    <img src="assets/app-store-badge.svg" alt="Download on the App Store" class="app-store-badge" style="height: 64px;">
-  </a>
+  <div class="store-badges">
+    <a href="https://apps.apple.com/app/id6769753335" target="_blank" rel="noopener" aria-label="Download on the App Store">
+      <img src="assets/app-store-badge.svg" alt="Download on the App Store" class="app-store-badge" style="height: 64px;">
+    </a>
+    <a href="https://play.google.com/store/apps/details?id=com.streamly.iptv.app" target="_blank" rel="noopener" aria-label="Get it on Google Play">
+      <img src="assets/google-play-badge.svg" alt="Get it on Google Play" class="app-store-badge" style="height: 64px;">
+    </a>
+  </div>
+  <p class="store-subline">
+    Also on
+    <a href="https://apps.apple.com/app/id6769753335" target="_blank" rel="noopener">Apple&nbsp;TV</a>
+    and
+    <a href="https://play.google.com/store/apps/details?id=com.streamly.iptv.tv" target="_blank" rel="noopener">Android&nbsp;TV</a>.
+  </p>
 </section>
 
 <!-- ───────── FOOTER ───────── -->
