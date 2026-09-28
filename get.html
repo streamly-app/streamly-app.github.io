@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get Streamly — IPTV Player for iPhone, iPad, Mac, Apple TV &amp; Android</title>
+<meta name="description" content="Download Streamly, the IPTV player for your own M3U or Xtream Codes playlist. On the App Store for iPhone, iPad, Mac and Apple TV, and on Google Play for Android phones, tablets and Android TV.">
+<link rel="canonical" href="https://streamly-app.github.io/get">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<!-- The link the apps share. These tags are the preview card that messaging
+     and social apps draw from it, so they have to stand on their own. -->
+<meta property="og:title" content="Streamly: IPTV Player">
+<meta property="og:description" content="Your IPTV, beautifully played. Bring your M3U or Xtream playlist — Streamly brings the player. iPhone, iPad, Mac, Apple TV, Android &amp; Android TV.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://streamly-app.github.io/get">
+<meta property="og:image" content="https://streamly-app.github.io/assets/banners/streamly-og-1200x630.png">
+<meta property="og:image:secure_url" content="https://streamly-app.github.io/assets/banners/streamly-og-1200x630.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Streamly — your IPTV, beautifully played, on iPhone, iPad, Mac, Apple TV and Android">
+<meta property="og:site_name" content="Streamly: IPTV Player">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Streamly: IPTV Player">
+<meta name="twitter:description" content="Your IPTV, beautifully played. Bring your M3U or Xtream playlist — Streamly brings the player.">
+<meta name="twitter:image" content="https://streamly-app.github.io/assets/banners/streamly-og-1200x630.png">
+<meta name="twitter:image:alt" content="Streamly — your IPTV, beautifully played">
+<meta name="apple-itunes-app" content="app-id=6769753335">
+<meta name="theme-color" content="#0A0612">
+<link rel="icon" type="image/png" sizes="256x256" href="assets/app-icon-256.png">
+<link rel="apple-touch-icon" href="assets/app-icon-256.png">
+<link rel="stylesheet" href="styles.css">
+<style>
+.get {
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  padding: 48px 20px;
+}
+.get-card {
+  width: 100%; max-width: 520px;
+  display: flex; flex-direction: column; align-items: center; gap: 24px;
+  text-align: center;
+}
+.get-icon { width: 104px; height: 104px; border-radius: 24px; box-shadow: 0 18px 48px rgba(220,38,38,0.28); }
+.get h1 { font-size: 34px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; text-wrap: balance; }
+.get .tagline { color: var(--text-2); font-size: 17px; line-height: 1.5; max-width: 30em; text-wrap: balance; }
+.get .tagline strong { color: var(--text); }
+.stores { width: 100%; display: flex; flex-direction: column; gap: 12px; }
+.store {
+  display: flex; align-items: center; gap: 16px;
+  padding: 16px 18px; border-radius: 18px;
+  background: rgba(255,255,255,0.04); border: 1px solid var(--border-strong);
+  color: var(--text); text-align: left;
+  transition: background 0.15s, border-color 0.15s, transform 0.15s;
+}
+.store:hover { background: rgba(255,255,255,0.08); color: var(--text); transform: translateY(-1px); }
+.store.recommended { border-color: rgba(220,38,38,0.7); background: rgba(220,38,38,0.10); }
+.store img { height: 44px; width: auto; flex-shrink: 0; }
+.store .meta { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.store .for { font-size: 15px; font-weight: 700; }
+.store .how { font-size: 13px; color: var(--text-2); }
+.store .pill {
+  display: none; align-self: flex-start; margin-bottom: 4px;
+  font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  color: #fff; background: var(--accent); padding: 3px 9px; border-radius: 999px;
+}
+.store.recommended .pill { display: inline-block; }
+.tv-mark {
+  height: 44px; width: 44px; border-radius: 12px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,0.08); color: var(--text);
+}
+.get .note { font-size: 13px; color: var(--text-3); max-width: 34em; line-height: 1.5; }
+.get .links { display: flex; gap: 20px; font-size: 14px; flex-wrap: wrap; justify-content: center; }
+@media (max-width: 420px) {
+  .get h1 { font-size: 28px; }
+  .store { gap: 12px; padding: 14px; }
+  .store img { height: 36px; }
+}
+</style>
+</head>
+<body>
+<main class="get">
+  <div class="get-card">
+    <img class="get-icon" src="assets/app-icon-256.png" alt="Streamly app icon" width="104" height="104">
+    <h1>Get Streamly</h1>
+    <p class="tagline"><strong>Your IPTV, beautifully played.</strong> Bring your M3U or Xtream Codes playlist — Streamly brings the player.</p>
+
+    <div class="stores" id="stores">
+      <a class="store" id="store-apple" href="https://apps.apple.com/app/id6769753335" target="_blank" rel="noopener">
+        <img src="assets/app-store-badge.svg" alt="Download on the App Store">
+        <span class="meta">
+          <span class="pill">For you</span>
+          <span class="for">iPhone · iPad · Mac · Apple TV</span>
+          <span class="how">One download, every Apple device</span>
+        </span>
+      </a>
+      <a class="store" id="store-play" href="https://play.google.com/store/apps/details?id=com.streamly.iptv.app&amp;referrer=utm_source%3Dstreamly_get%26utm_medium%3Dshare" target="_blank" rel="noopener">
+        <img src="assets/google-play-badge.svg" alt="Get it on Google Play">
+        <span class="meta">
+          <span class="pill">For you</span>
+          <span class="for">Android phones &amp; tablets</span>
+          <span class="how">Google Play</span>
+        </span>
+      </a>
+      <a class="store" id="store-androidtv" href="https://play.google.com/store/apps/details?id=com.streamly.iptv.tv&amp;referrer=utm_source%3Dstreamly_get%26utm_medium%3Dshare" target="_blank" rel="noopener">
+        <span class="tv-mark" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="12" rx="2"></rect><path d="M8 21h8"></path><path d="M12 17v4"></path></svg>
+        </span>
+        <span class="meta">
+          <span class="pill">For you</span>
+          <span class="for">Android TV &amp; Google TV</span>
+          <span class="how">On Google Play — or search “Streamly” on your TV</span>
+        </span>
+      </a>
+    </div>
+
+    <p class="note">Streamly is a player. It doesn't sell or include any channels — you add your own M3U or Xtream Codes playlist.</p>
+    <nav class="links" aria-label="More">
+      <a href="index.html">What is Streamly?</a>
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
+  </div>
+</main>
+<script>
+// Lead with the store for the device the link was opened on. Every store
+// stays listed: the person may be choosing for another device.
+(function () {
+  var ua = navigator.userAgent || "";
+  var isAndroidTV = /Android/i.test(ua) && /(\bTV\b|AFT|BRAVIA|SMART-TV|GoogleTV)/i.test(ua);
+  var isAndroid = /Android/i.test(ua);
+  // iPadOS reports itself as a Mac; touch points tell them apart.
+  var isApple = /iPhone|iPad|iPod|Macintosh|AppleTV/i.test(ua);
+  var pick = isAndroidTV ? "store-androidtv" : isAndroid ? "store-play" : isApple ? "store-apple" : null;
+  if (!pick) return;
+  var el = document.getElementById(pick);
+  var list = document.getElementById("stores");
+  if (!el || !list) return;
+  el.classList.add("recommended");
+  list.insertBefore(el, list.firstChild);
+})();
+</script>
+</body>
+</html>
