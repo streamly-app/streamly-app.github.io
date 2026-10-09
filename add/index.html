@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Add to Streamly</title>
+<meta name="description" content="Open this playlist in Streamly, the player for your own M3U and Xtream Codes playlists.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#0A0612">
+<link rel="icon" type="image/png" sizes="256x256" href="/assets/app-icon-256.png">
+<link rel="stylesheet" href="/styles.css">
+<style>
+.add-wrap { max-width: 620px; margin: 0 auto; padding: 130px 20px 60px; }
+.add-card { background: rgba(24,10,40,0.55); border: 1px solid var(--border); border-radius: 22px; padding: 36px 28px; backdrop-filter: blur(20px); }
+.add-card h1 { font-size: clamp(28px, 6vw, 40px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 10px; text-wrap: balance; }
+.add-card .lede { color: var(--text-2); margin-bottom: 24px; }
+.addr { display: flex; gap: 10px; align-items: center; background: rgba(0,0,0,0.35); border: 1px solid var(--border-strong); border-radius: 12px; padding: 12px 14px; margin-bottom: 8px; }
+.addr code { flex: 1; min-width: 0; overflow-wrap: anywhere; font: 15px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace; color: #fff; }
+.addr button, .copy { flex: none; background: rgba(255,255,255,0.1); color: #fff; border: 1px solid var(--border-strong); border-radius: 9px; padding: 7px 12px; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; }
+.hint { color: var(--text-3); font-size: 13px; margin-bottom: 26px; }
+.steps { list-style: none; counter-reset: s; display: grid; gap: 18px; margin: 0 0 8px; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 30px 1fr; gap: 12px; }
+.steps li::before { content: counter(s); width: 30px; height: 30px; border-radius: 50%; background: var(--accent); display: grid; place-items: center; font-weight: 700; font-size: 14px; }
+.steps h2 { font-size: 17px; font-weight: 700; margin-bottom: 6px; }
+.steps p { color: var(--text-2); font-size: 15px; margin-bottom: 10px; }
+.badges { display: flex; gap: 12px; flex-wrap: wrap; }
+.badges img { height: 44px; display: block; }
+.btn.open { display: inline-block; }
+.by-hand { margin-top: 28px; border-top: 1px solid var(--border); padding-top: 20px; color: var(--text-2); font-size: 14px; }
+.by-hand summary { cursor: pointer; font-weight: 600; color: #fff; }
+.by-hand ol { margin: 12px 0 0 20px; display: grid; gap: 6px; }
+.note { margin-top: 22px; color: var(--text-3); font-size: 13px; text-align: center; }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="/" class="logo-img" aria-label="Streamly home"><img src="/assets/logo-horizontal.png" alt="Streamly"></a>
+  <div class="nav-links"><a href="/support.html">Support</a></div>
+</nav>
+
+<main class="add-wrap">
+  <div class="add-card" id="ok" hidden>
+    <h1 id="title">Add this playlist to Streamly</h1>
+    <p class="lede">Streamly is a player. It opens the playlist below so you can sign in with the details your provider gave you.</p>
+
+    <div class="addr"><code id="address"></code><button type="button" id="copy">Copy</button></div>
+    <p class="hint" id="kind"></p>
+
+    <ol class="steps">
+      <li><div>
+        <h2>Get Streamly</h2>
+        <p>Free on iPhone, iPad, Mac and Android. Already installed? Make sure it is up to date.</p>
+        <div class="badges">
+          <a href="https://apps.apple.com/app/id6769753335"><img src="/assets/app-store-badge.svg" alt="Download on the App Store"></a>
+          <a href="https://play.google.com/store/apps/details?id=com.streamly.iptv.app"><img src="/assets/google-play-badge.svg" alt="Get it on Google Play"></a>
+        </div>
+      </div></li>
+      <li><div>
+        <h2>Open the playlist in Streamly</h2>
+        <p>The app opens on Add Playlist with the address filled in. Type your own username and password there.</p>
+        <a class="btn accent large open" id="open" href="#">Open in Streamly</a>
+      </div></li>
+    </ol>
+
+    <details class="by-hand">
+      <summary>The button does nothing?</summary>
+      <ol>
+        <li>Update Streamly from the store, then try the button again.</li>
+        <li>Or add it by hand: open Streamly, choose Add Playlist, pick <span id="hand-kind"></span>, and paste the address above.</li>
+        <li>On Apple TV and Android TV, add it by hand with the remote.</li>
+      </ol>
+    </details>
+  </div>
+
+  <div class="add-card" id="bad" hidden>
+    <h1>This link is not complete</h1>
+    <p class="lede">It does not contain a valid playlist address. Ask whoever sent it for a new link, or add your playlist by hand in Streamly under Add Playlist.</p>
+    <a class="btn secondary" href="/">About Streamly</a>
+  </div>
+
+  <p class="note">Streamly is only a player. It does not include, sell or host any channels or content, and it is not affiliated with the service named in this link.</p>
+</main>
+
+<script src="link.js"></script>
+<script>
+(function () {
+  var link = StreamlyLink.parse(new URLSearchParams(location.search));
+  if (!link) { document.getElementById('bad').hidden = false; return; }
+  document.getElementById('ok').hidden = false;
+  if (link.name) {
+    document.getElementById('title').textContent = 'Add ' + link.name + ' to Streamly';
+    document.title = 'Add ' + link.name + ' to Streamly';
+  }
+  document.getElementById('address').textContent = link.address;
+  var xtream = link.type === 'xtream';
+  document.getElementById('kind').textContent = xtream ? 'Xtream Codes server address' : 'M3U playlist address';
+  document.getElementById('hand-kind').textContent = xtream ? 'Xtream Codes' : 'M3U';
+  document.getElementById('open').href = StreamlyLink.appUrl(link);
+  var copy = document.getElementById('copy');
+  copy.addEventListener('click', function () {
+    var done = function () { copy.textContent = 'Copied'; setTimeout(function () { copy.textContent = 'Copy'; }, 1500); };
+    if (navigator.clipboard) navigator.clipboard.writeText(link.address).then(done, function () {});
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>For providers · Add to Streamly link</title>
+<meta name="description" content="Run a TV service or your own media server? Give your users one link or QR code that opens Streamly with your server address filled in.">
+<link rel="canonical" href="https://streamly-app.github.io/providers.html">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Streamly: IPTV Player">
+<meta property="og:title" content="For providers · Add to Streamly link">
+<meta property="og:description" content="One link or QR code that opens Streamly with your server address filled in.">
+<meta property="og:url" content="https://streamly-app.github.io/providers.html">
+<meta property="og:image" content="https://streamly-app.github.io/assets/banners/streamly-og-1200x630.png">
+<meta name="theme-color" content="#0A0612">
+<link rel="icon" type="image/png" sizes="256x256" href="assets/app-icon-256.png">
+<link rel="stylesheet" href="styles.css">
+<style>
+.pv { max-width: 860px; margin: 0 auto; padding: 130px 24px 40px; }
+.pv h1 { font-size: clamp(34px, 5vw, 54px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 16px; text-wrap: balance; }
+.pv .lede { color: var(--text-2); font-size: 18px; max-width: 62ch; margin-bottom: 36px; }
+.pv h2 { font-size: 24px; font-weight: 700; margin: 48px 0 14px; }
+.pv p, .pv li { color: var(--text-2); max-width: 68ch; }
+.pv ul, .pv ol { margin: 0 0 0 20px; display: grid; gap: 8px; }
+.card { background: rgba(24,10,40,0.55); border: 1px solid var(--border); border-radius: 20px; padding: 28px; backdrop-filter: blur(20px); }
+.gen { display: grid; gap: 16px; }
+.gen label { display: grid; gap: 6px; font-size: 13px; font-weight: 600; color: var(--text-2); }
+.gen input, .gen select, .gen textarea { width: 100%; background: rgba(0,0,0,0.35); color: #fff; border: 1px solid var(--border-strong); border-radius: 10px; padding: 11px 12px; font: 15px/1.4 inherit; }
+.gen textarea { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; resize: vertical; }
+.row { display: grid; grid-template-columns: 160px 1fr; gap: 14px; }
+.out { display: grid; grid-template-columns: 1fr 188px; gap: 22px; align-items: start; margin-top: 8px; }
+.out[hidden] { display: none; }
+.qr { background: #fff; border-radius: 14px; padding: 12px; }
+.qr svg, .qr img { display: block; width: 100%; height: auto; }
+.linkbox { display: flex; gap: 10px; align-items: flex-start; background: rgba(0,0,0,0.35); border: 1px solid var(--border-strong); border-radius: 12px; padding: 12px 14px; }
+.linkbox code { flex: 1; min-width: 0; overflow-wrap: anywhere; font: 13px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; color: #fff; }
+.copy { flex: none; background: rgba(255,255,255,0.1); color: #fff; border: 1px solid var(--border-strong); border-radius: 9px; padding: 7px 12px; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; }
+.err { color: var(--accent-light); font-size: 14px; }
+.small { font-size: 13px; color: var(--text-3); }
+.actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+@media (max-width: 720px) { .row, .out { grid-template-columns: 1fr; } .qr { max-width: 220px; } }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="logo-img" aria-label="Streamly home"><img src="assets/logo-horizontal.png" alt="Streamly"></a>
+  <div class="nav-links">
+    <a href="index.html#features">Features</a>
+    <a href="index.html#pricing">Pricing</a>
+    <a href="support.html">Support</a>
+  </div>
+</nav>
+
+<main class="pv">
+  <h1>Send your users straight into Streamly</h1>
+  <p class="lede">If you run a TV service or your own media server, one link or QR code opens Streamly on Add Playlist with your server address already filled in. Your users type their own username and password, and they are watching.</p>
+
+  <div class="card">
+    <form class="gen" id="gen" onsubmit="return false">
+      <div class="row">
+        <label>Playlist type
+          <select id="type">
+            <option value="xtream">Xtream Codes</option>
+            <option value="m3u">M3U address</option>
+          </select>
+        </label>
+        <label><span id="addr-label">Server address</span>
+          <input id="address" type="url" inputmode="url" autocomplete="off" spellcheck="false" placeholder="http://tv.example.com:8080">
+        </label>
+      </div>
+      <label>Name shown to your users (optional)
+        <input id="name" type="text" maxlength="60" autocomplete="off" placeholder="Example TV">
+      </label>
+      <p class="err" id="err" hidden>Enter an address that starts with http:// or https:// and has no username or password in it.</p>
+
+      <div class="out" id="out" hidden>
+        <div>
+          <label>Your link</label>
+          <div class="linkbox"><code id="link"></code><button type="button" class="copy" data-copy="link">Copy</button></div>
+          <div class="actions">
+            <a class="btn secondary" id="try" href="#" target="_blank" rel="noopener">Preview the page</a>
+            <button type="button" class="btn secondary" id="save-qr">Save QR code</button>
+          </div>
+          <label style="margin-top:18px">Text you can send to your users</label>
+          <textarea id="guide" rows="7" readonly></textarea>
+          <div class="actions"><button type="button" class="copy" data-copy="guide">Copy text</button></div>
+        </div>
+        <div>
+          <div class="qr" id="qr" aria-label="QR code for your link"></div>
+          <p class="small" style="margin-top:8px">Scan with a phone camera.</p>
+        </div>
+      </div>
+    </form>
+  </div>
+  <p class="small" style="margin-top:12px">Everything on this page is worked out in your browser. Nothing you type is sent to us.</p>
+
+  <h2>How it works for your users</h2>
+  <ol>
+    <li>They open your link or scan your code. A short page shows your name and address, with buttons to get Streamly.</li>
+    <li>They tap Open in Streamly. The app opens on Add Playlist with your address filled in.</li>
+    <li>They type the username and password you gave them and save. That is all.</li>
+  </ol>
+
+  <h2>Good to know</h2>
+  <ul>
+    <li><strong>No passwords in links.</strong> A link carries an address and a name, never a login. Streamly ignores any username or password put into one.</li>
+    <li><strong>Nothing happens automatically.</strong> The app shows the address and waits for the user. It does not save or connect by itself.</li>
+    <li><strong>Phones, tablets and Mac.</strong> The link opens Streamly on iPhone, iPad, Mac and Android. On Apple TV and Android TV users add the address with the remote.</li>
+    <li><strong>Streamly is only a player.</strong> It does not include, sell or host channels, and it does not list, endorse or promote any service. This link is for services and servers whose content you have the right to offer.</li>
+    <li><strong>Free.</strong> There is nothing to sign up for and no fee. Streamly is free to download; your users can use it with your playlist at no cost.</li>
+  </ul>
+
+  <h2>Running your own server?</h2>
+  <p>The same link works for home setups. If your TVHeadend, Jellyfin, Channels or tuner software publishes an M3U address or an Xtream-style login, make a link once and send it to your family.</p>
+
+  <h2>Questions</h2>
+  <p>Write to <a href="mailto:streamlyiptvpro@gmail.com">streamlyiptvpro@gmail.com</a>.</p>
+</main>
+
+<footer class="site-footer">
+  <div class="inner">
+    <div class="brand">
+      <a href="index.html" class="logo-img"><img src="assets/logo-horizontal.png" alt="Streamly"></a>
+      <p>© 2026 Streamly · Built by <a href="https://aylanastudio.github.io">Aylana Studio</a></p>
+    </div>
+    <div class="links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+      <a href="support.html">Support</a>
+      <a href="mailto:streamlyiptvpro@gmail.com">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script src="add/link.js"></script>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var type = $('type'), address = $('address'), name = $('name');
+
+  function build() {
+    var m3u = type.value === 'm3u';
+    $('addr-label').textContent = m3u ? 'Playlist address' : 'Server address';
+    address.placeholder = m3u ? 'https://example.com/playlist.m3u' : 'http://tv.example.com:8080';
+    var raw = address.value.trim();
+    var p = new URLSearchParams();
+    p.set('type', type.value); p.set(m3u ? 'url' : 'host', raw); p.set('name', name.value);
+    var link = raw ? StreamlyLink.parse(p) : null;
+    $('err').hidden = !raw || !!link;
+    $('out').hidden = !link;
+    if (!link) return;
+    var url = StreamlyLink.webUrl(link);
+    $('link').textContent = url;
+    $('try').href = url.replace('https://streamly-app.github.io/', location.origin + '/');
+    var who = link.name || 'our service';
+    $('guide').value = 'Watch ' + who + ' with Streamly\n\n' +
+      '1. Open this link on your phone, tablet or Mac:\n   ' + url + '\n' +
+      '2. Install Streamly if you do not have it yet, then tap "Open in Streamly".\n' +
+      '3. Type the username and password we sent you, and save.\n\n' +
+      'On a TV, open Streamly, choose Add Playlist and enter this address: ' + link.address;
+    if (window.qrcode) {
+      var q = qrcode(0, 'M'); q.addData(url); q.make();
+      $('qr').innerHTML = q.createSvgTag({ cellSize: 4, margin: 0, scalable: true });
+    }
+  }
+  [type, address, name].forEach(function (el) { el.addEventListener('input', build); });
+
+  document.querySelectorAll('[data-copy]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var el = $(b.dataset.copy), text = el.value || el.textContent, label = b.textContent;
+      if (navigator.clipboard) navigator.clipboard.writeText(text).then(function () {
+        b.textContent = 'Copied'; setTimeout(function () { b.textContent = label; }, 1500);
+      }, function () {});
+    });
+  });
+
+  $('save-qr').addEventListener('click', function () {
+    var svg = $('qr').querySelector('svg'); if (!svg) return;
+    var s = new XMLSerializer().serializeToString(svg);
+    if (s.indexOf('xmlns=') < 0) s = s.replace('<svg', '<svg xmlns="http://www.w3.org/2000/svg"');
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([s], { type: 'image/svg+xml' }));
+    a.download = 'streamly-qr.svg'; a.click();
+  });
+  build();
+})();
+</script>
+</body>
+</html>
