@@ -9,14 +9,20 @@
 
   function cleanName(raw) {
     if (!raw) return null;
-    var s = String(raw).replace(/[\u0000-\u001F\u007F]+/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 60).trim();
-    return s || null;
+    var s = String(raw).replace(/[\u0000-\u001F\u007F]+/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 60);
+    // Never leave half of an emoji behind.
+    if (/[\uD800-\uDBFF]$/.test(s)) s = s.slice(0, -1);
+    return s.trim() || null;
   }
 
   function httpUrl(raw) {
     if (!raw || raw.length > MAX) return null;
+    var s = String(raw).trim();
+    // The apps refuse spaces, control characters and backslashes in an
+    // address, so a link carrying one must not get an Open button here.
+    if (/[\s\\\u0000-\u001F\u007F]/.test(s)) return null;
     var u;
-    try { u = new URL(String(raw).trim()); } catch (e) { return null; }
+    try { u = new URL(s); } catch (e) { return null; }
     if (u.protocol !== 'http:' && u.protocol !== 'https:') return null;
     if (!u.hostname || u.username || u.password) return null;
     return u;
